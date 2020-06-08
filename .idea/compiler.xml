@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cloud-user-service" />
+        <module name="cloud-auth-service" />
+        <module name="common" />
+        <module name="cloud-eureka-service" />
+        <module name="cloud-company-service" />
+        <module name="cloud-seller-service" />
+        <module name="cloud-auth2-service" />
+        <module name="cloud-zuul-service" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

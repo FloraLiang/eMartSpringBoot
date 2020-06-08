@@ -1,11 +1,15 @@
 package com.iiht.stock.controller;
 
-import com.iiht.stock.entity.eMartUserEntity;
-import com.iiht.stock.repository.UserRepository;
+
+import com.iiht.stock.entity.UserModel;
+import com.iiht.stock.entity.eMartSellerEntity;
+import com.iiht.stock.exception.StockEXConstants;
+import com.iiht.stock.exception.StockRequestException;
+import com.iiht.stock.repository.SellerRepository;
+//import com.iiht.stock.service.UserService;
+import com.iiht.stock.service.SellerService;
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +23,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.iiht.stock.entity.CompanyEntity;
-import com.iiht.stock.entity.UserEntity;
-import com.iiht.stock.entity.UserModel;
-import com.iiht.stock.exception.StockEXConstants;
-import com.iiht.stock.exception.StockRequestException;
-import com.iiht.stock.service.CompanyServiceClient;
-import com.iiht.stock.service.UserService;
+import com.iiht.stock.repository.SellerRepository;
 
 /**
  * 
@@ -42,12 +39,12 @@ import com.iiht.stock.service.UserService;
 @RestController
 @RequestMapping("/api/user")
 // @CrossOrigin(origins="http://localhost:4200")
-public class UserController {
+public class SellerController {
 	@Autowired
-	private UserService userService;
+	private SellerService sellerService;
 
 	@Autowired
-	private UserRepository userRepository;
+	private SellerRepository sellerRepository;
 //	@Autowired
 //	private CompanyServiceClient companyServiceClient;
 	
@@ -56,8 +53,8 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping
-	public List<eMartUserEntity> findAllUsers() {
-		return userService.findAllUsers();
+	public List<eMartSellerEntity> findAllUsers() {
+		return sellerService.findAllUsers();
 	}
 
 //	@GetMapping("/company/{id}")
@@ -65,36 +62,36 @@ public class UserController {
 //		return companyServiceClient.queryCompanyEntityById(id);
 //	}
 	@PostMapping("/eMartUser/save")
-	public eMartUserEntity save(eMartUserEntity user){
-		eMartUserEntity res = userRepository.save(user);
+	public eMartSellerEntity save(eMartSellerEntity user){
+		eMartSellerEntity res = sellerRepository.save(user);
     return res;
 	}
 	
-	@PostMapping
-	public ResponseEntity<eMartUserEntity> regist(@RequestBody @Valid eMartUserEntity user, BindingResult bindingResult) {
+	/*@PostMapping
+	public ResponseEntity<UserEntity> regist(@RequestBody @Valid UserModel user, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()){
 			throw new StockRequestException(StockEXConstants.ERROR_REQUEST_PARAM, bindingResult);
 		}
 		
-		eMartUserEntity existedUser = userService.findUserByUserName(user.getUserName());
+		UserEntity existedUser = userService.findUserByUserName(user.getUserName());
 		if(existedUser != null){
 			bindingResult.rejectValue("userName", "400001", "the user name is existed.");
 			throw new StockRequestException(StockEXConstants.ERROR_REQUEST_PARAM, bindingResult);
 		}
 		
-		eMartUserEntity userEntity = userService.registUser(user);
+		UserEntity userEntity = userService.registUser(user);
 		return ResponseEntity.status(HttpStatus.CREATED).body(userEntity);
 	}
 
 	@PutMapping
-	public ResponseEntity<eMartUserEntity> update(eMartUserEntity user) {
-		eMartUserEntity userEntity = userService.updateUser(user);
+	public ResponseEntity<UserEntity> update(UserEntity user) {
+		UserEntity userEntity = userService.updateUser(user);
 		return ResponseEntity.ok(userEntity);
 	}
 
 	@GetMapping("/active/{id}")
-	public ResponseEntity<eMartUserEntity> active(@PathVariable Integer id) {
-		eMartUserEntity user = userService.activeUser(id);
+	public ResponseEntity<UserEntity> active(@PathVariable Integer id) {
+		UserEntity user = userService.activeUser(id);
 		return ResponseEntity.ok(user);
 	}
 
@@ -103,5 +100,5 @@ public class UserController {
 	public ResponseEntity<String> delete(@PathVariable Integer id) {
 		userService.delete(id);
 		return ResponseEntity.ok("Delete user successfully.");
-	}
+	}*/
 }

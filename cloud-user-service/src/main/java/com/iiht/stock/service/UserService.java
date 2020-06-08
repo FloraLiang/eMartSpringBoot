@@ -1,26 +1,28 @@
 package com.iiht.stock.service;
 
+import com.iiht.stock.entity.eMartUserEntity;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
 
-import com.iiht.stock.entity.UserEntity;
+import com.iiht.stock.entity.eMartUserEntity;
 
 public interface UserService {
 
-	public Page<UserEntity> findAll(int page, int pageSize);
+	public Page<eMartUserEntity> findAll(int page, int pageSize);
 	
-	public List<UserEntity> findAllUsers();
+	public List<eMartUserEntity> findAllUsers();
 	
-	public UserEntity findUserById(Integer id);
+	public eMartUserEntity findUserById(Integer id);
 	
-	public UserEntity findUserByUserName(String userName);
+	public eMartUserEntity findUserByUserName(String userName);
 	
-	public UserEntity registUser(UserEntity user);
+	public eMartUserEntity registUser(eMartUserEntity user);
+
+
+	public eMartUserEntity updateUser(eMartUserEntity user);
 	
-	public UserEntity updateUser(UserEntity user);
-	
-	public UserEntity activeUser(Integer id);
+	public eMartUserEntity activeUser(Integer id);
 	
 	public void delete(Integer id);
 	
