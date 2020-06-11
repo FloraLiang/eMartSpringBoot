@@ -17,6 +17,8 @@ zuul:
    routes:
       cloud-user-service: /cloud-user-service/**   #重启机器后要多等一段时间才访问，注册要有三次心跳后才注册成功
       cloud-auth-service: /cloud-auth-service/**
+      cloud-seller-service: /cloud-seller-service/**
+
 #      user-service:   #静态路由
 #         path: /cloud-simple-service/**
 #         url: http://localhost:8081/
