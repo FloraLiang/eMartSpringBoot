@@ -53,7 +53,7 @@ public class UserController {
 	public List<eMartUserEntity> findAllUsers() {
 		return userService.findAllUsers();
 	}
-	
+
 	@PostMapping("/eMartUser/save")
 	public eMartUserEntity save(eMartUserEntity user){
 		eMartUserEntity res = userRepository.save(user);
